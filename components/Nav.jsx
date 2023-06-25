@@ -7,7 +7,9 @@ import { useContext } from 'react';
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const Nav = () => {
-  const isUserLoggedIn = true;
+  // const isUserLoggedIn = true;
+  //using the real time data for above lines
+  const {data: session} = useSession();
 
   // const [providers, setProviders] = useState(null);
 
@@ -38,7 +40,9 @@ const Nav = () => {
 
       {/* Desktop Navigation */}
       <div className="sm:flex hidden">
-        {isUserLoggedIn ? (
+        {/* {isUserLoggedIn ? ( */}
+        {/* using realtime data for above code */}
+        {session?.user ? (
           <div className="flex gap-3 md:gap-5">
             <Link href="/create-prompt" className="black_btn">
               Create Post
@@ -75,7 +79,9 @@ const Nav = () => {
 
       {/* Mobile Navigation */}
       <div className="sm:hidden flex relative">
-        {isUserLoggedIn ? (
+        {/* {isUserLoggedIn ? ( */}
+        {/* using realtime data for above code */}
+        {session?.user ? (
           <div className="flex">
             <Image
               src="/assets/images/logo.svg"
